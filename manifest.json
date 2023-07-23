@@ -1,0 +1,66 @@
+{
+  "name": "Auto EJDB",
+  "version": "1.4.4",
+  "description": "論文にアクセスする際に自動的にEJDBを使用します。",
+  "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "https://*.doi.org/*"
+  ],
+  "icons": {
+    "128": "Icon.png"
+  },
+  "background": {
+		"service_worker": "src/background.js",
+    "type": "module"
+	},
+  "action": {
+    "default_icon": "./Icon.png",
+    "default_title": "EJDB"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://scholar.google.com/scholar?*",
+        "https://scholar.google.co.jp/scholar?*"
+      ],
+      "js": [ "src/scholar.js" ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://*.kyoto-u.idm.oclc.org/*",
+        "https://*.kyoto-u.idm.oclc.org/*?*"
+      ],
+      "js": [
+        "src/auth-fail.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [ "<all_urls>" ],
+      "js": [
+        "src/config.js",
+        "src/inject.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "redirect-doi",
+        "enabled": true,
+        "path": "rules1.json"
+      }
+    ]
+  }
+}
