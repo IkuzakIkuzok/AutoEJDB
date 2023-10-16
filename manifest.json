@@ -1,6 +1,6 @@
 {
   "name": "Auto EJDB",
-  "version": "1.4.4",
+  "version": "2.0.0",
   "description": "論文にアクセスする際に自動的にEJDBを使用します。",
   "manifest_version": 3,
   "permissions": [
@@ -9,7 +9,8 @@
     "declarativeNetRequest"
   ],
   "host_permissions": [
-    "https://*.doi.org/*"
+    "https://*.doi.org/*",
+    "*://kyoto-u.idm.oclc.org/*"
   ],
   "icons": {
     "128": "Icon.png"

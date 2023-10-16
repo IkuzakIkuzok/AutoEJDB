@@ -7,8 +7,6 @@ const getEjdbUrl = (originalUrl) => `https://kyoto-u.idm.oclc.org/login?auth=ID1
 
 chrome.action.onClicked.addListener(tab => {
   const originalUrl = tab.url;
-  console.log(originalUrl);
-
   if (!originalUrl) return;
 
   const host = new URL(originalUrl).hostname;
@@ -18,3 +16,12 @@ chrome.action.onClicked.addListener(tab => {
   const ejdbUrl = getEjdbUrl(originalUrl);
   chrome.tabs.update(tab.id ?? -1, { url: ejdbUrl });
 });
+
+const databaseUrl = 'http://kyoto-u.idm.oclc.org/menu';
+setInterval(() => {
+  fetch(databaseUrl).then((response) => {
+    console.log(`${new Date()}: status: ${response.status}, logged in: ${response.url === databaseUrl}`);
+  }).catch((error) => {
+    console.error(error);
+  });
+}, 1000 * 60 * 60);
