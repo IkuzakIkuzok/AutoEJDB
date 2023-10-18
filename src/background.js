@@ -18,10 +18,14 @@ chrome.action.onClicked.addListener(tab => {
 });
 
 const databaseUrl = 'http://kyoto-u.idm.oclc.org/menu';
-setInterval(() => {
-  fetch(databaseUrl).then((response) => {
-    console.log(`${new Date()}: status: ${response.status}, logged in: ${response.url === databaseUrl}`);
-  }).catch((error) => {
-    console.error(error);
-  });
-}, 1000 * 60 * 60);
+
+chrome.alarms.create('check-login', { periodInMinutes: 60 });
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === 'check-login') {
+    fetch(databaseUrl).then((response) => {
+      console.log(`${new Date()}: status: ${response.status}, logged in: ${response.url === databaseUrl}`);
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+});
