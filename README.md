@@ -29,3 +29,4 @@
 
 - 旧バージョンから更新した際に権限の確認が表示されず一部の機能が動作しなくなる場合があります。そのような場合には拡張機能の管理画面から再度有効化してください。
 - Chrome拡張機能一般に関する事項は[Chrome ウェブストア ヘルプ](https://support.google.com/chrome_webstore/answer/2664769)を参照してください。
+- Firefox版: [ダウンロード](https://ikuzak.com/ku/extensions/auto-ejdb-download.html?browser=firefox)
