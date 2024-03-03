@@ -1,0 +1,30 @@
+[
+  {
+    "id": 2,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://pubs-acs-org.kyoto-u.idm.oclc.org/doi/full/\\2"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://pubs-acs-org.kyoto-u.idm.oclc.org/doi/(abs/)?(\\d+.\\d+/[^/]+)$",
+      "resourceTypes":[ "main_frame" ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 2,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://onlinelibrary-wiley-com.kyoto-u.idm.oclc.org/doi/full/\\2"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://onlinelibrary-wiley-com.kyoto-u.idm.oclc.org/doi/(abs/)?(\\d+.\\d+/[^/]+)$",
+      "resourceTypes":[ "main_frame" ]
+    }
+  }
+]
