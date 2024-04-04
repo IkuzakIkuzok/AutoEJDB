@@ -5,11 +5,11 @@
     "action": {
       "type": "redirect",
       "redirect": {
-        "regexSubstitution": "https://pubs-acs-org.kyoto-u.idm.oclc.org/doi/full/\\2"
+        "regexSubstitution": "https://pubs-acs-org.kyoto-u.idm.oclc.org/doi/full/\\2?auto-ejdb-auth-request-flag=1"
       }
     },
     "condition": {
-      "regexFilter": "^https://pubs-acs-org.kyoto-u.idm.oclc.org/doi/(abs/)?(\\d+.\\d+/[^/]+)$",
+      "regexFilter": "^https://pubs-acs-org.kyoto-u.idm.oclc.org/doi/(abs/)?(\\d+.\\d+/[^\\?]+)$",
       "resourceTypes":[ "main_frame" ]
     }
   },
@@ -19,11 +19,11 @@
     "action": {
       "type": "redirect",
       "redirect": {
-        "regexSubstitution": "https://onlinelibrary-wiley-com.kyoto-u.idm.oclc.org/doi/full/\\2"
+        "regexSubstitution": "https://onlinelibrary-wiley-com.kyoto-u.idm.oclc.org/doi/full/\\2?auto-ejdb-auth-request-flag=1"
       }
     },
     "condition": {
-      "regexFilter": "^https://onlinelibrary-wiley-com.kyoto-u.idm.oclc.org/doi/(abs/)?(\\d+.\\d+/[^/]+)$",
+      "regexFilter": "^https://onlinelibrary-wiley-com.kyoto-u.idm.oclc.org/doi/(abs/)?(\\d+.\\d+/[^\\?]+)$",
       "resourceTypes":[ "main_frame" ]
     }
   }

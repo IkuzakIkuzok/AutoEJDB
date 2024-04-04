@@ -1,6 +1,6 @@
 {
   "name": "Auto EJDB",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "論文にアクセスする際に自動的にEJDBを使用します。",
   "manifest_version": 3,
   "permissions": [
