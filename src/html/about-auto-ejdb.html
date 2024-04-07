@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto EJDB</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Auto EJDB</h1>
+    <h2>EJDBとは</h2>
+    <p>EJDBは，京都大学が提供する電子ジャーナル・データベース認証システム
+      (<b>E</b>-<b>J</b>ournal and <b>D</b>ata<b>b</b>ase Authentication System)
+    のことです。</p>
+    <p>多くの学術論文は閲覧時にびっくりするような購読料を要求されます。
+      (例えば，<a href="https://doi.org/10.1002/solr.202300359" target="_blank">Chrome ウェブストアの画像として貼っている論文</a>はPDFダウンロードに59 USD必要です。)
+    論文1本ごとにこんな額を払っていては話にならないため，京都大学では大学全体として購読契約を行っています。
+    本認証システムは，京都大学の契約に基づいたアクセスであることを認証するシステムです。</p>
+    <h2>なぜAuto EJDBが必要なのか</h2>
+    <p>EJDBでは電子ジャーナルへのアクセス時にプロキシサーバ(Proxy=代理人)を経由することで認証を行っています。
+      この方法では学外からもアクセス可能であるという利点がある一方で，ページごとにプロキシサーバへの転送をユーザが行う必要があります。
+    </p>
+    <p>Auto EJDBは，ページごとの認証作業を(ほぼ)自動化するための拡張機能です。</p>
+    <h2>使い方</h2>
+    <h3>初回同意について</h3>
+    <p>EJDB(本拡張機能ではなく認証システム)の利用開始前に
+      <a href="https://ninsho-log4.kulib.kyoto-u.ac.jp/wsgi/ezproxy_setup" target="_blank">初回同意</a>
+    が必要になります。
+    (ブックマークレットの設定は不要です。)</p>
+    <p><img src="./assets/installation.png" alt=""></p>
+    <p>拡張機能をツールバーに固定しておくとより便利に利用することができます。
+      認証したいページで拡張機能アイコンをクリックすると，自動的に認証システムを経由してアクセスすることができます。
+    </p>
+    <h3>電子ジャーナルの判定</h3>
+    <p>以下のページは電子ジャーナルであると判定され，自動的に認証システムを経由するようになります。</p>
+    <ul>
+      <li>DOIで指定されたページ (<code>https://doi.org/...</code>)</li>
+      <li>代表的な論文検索サービスからアクセスされたページ
+        <ul>
+          <li><a href="https://scholar.google.com" target="_blank">Google Scholar</a></li>
+          <li><a href="https://scifinder-n.cas.org" target="_blank">SciFinder-n</a></li>
+          <li><a href="https://www.webofscience.com/wos/woscc/basic-search" target="_blank">Web of Science</a></li>
+        </ul>
+      </li>
+      <li>拡張機能アイコンを通して認証したことがあるジャーナル</li>
+    </ul>
+    <h2>注意事項</h2>
+    <ul>
+      <li>この拡張機能は京都大学<strong>非公認</strong>です。
+      利用に当たっては<a href="https://www.kulib.kyoto-u.ac.jp/erdb/13505" target="_blank">公式の情報</a>もご確認ください。</li>
+      <li>電子ジャーナルへの<strong>過剰なアクセスは絶対にしない</strong>でください。
+        不正なリクエストとみなされた場合には，京都大学の契約が打ち切られる可能性があります。
+      </li>
+      <li>短期IDのみが発行されている場合は使用しないでください。
+        本拡張機能を利用すると，認証時に自動的にECS-ID/SPS-IDが選択されます。
+      </li>
+    </ul>
+    <h2>関連項目</h2>
+    <ul>
+      <li><a href="https://www.kulib.kyoto-u.ac.jp/erdb/13505" target="_blank">京都大学図書館機構 - 電子リソースへのアクセスについて</a></li>
+    </ul>
+  </main>
+</body>
+</html>

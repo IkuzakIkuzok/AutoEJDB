@@ -3,7 +3,7 @@
 
 import { addHost } from "./config-bg.js";
 
-const getEjdbUrl = (originalUrl) => `https://kyoto-u.idm.oclc.org/login?auth=ID1&url=${originalUrl}`;
+const getEjdbUrl = (/** @type {string} */ originalUrl) => `https://kyoto-u.idm.oclc.org/login?auth=ID1&url=${originalUrl}`;
 
 chrome.action.onClicked.addListener(tab => {
   const originalUrl = tab.url;
@@ -25,7 +25,13 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     fetch(databaseUrl).then((response) => {
       console.log(`${new Date()}: status: ${response.status}, logged in: ${response.url === databaseUrl}`);
     }).catch((error) => {
-      console.error(error);
+      console.log(error);
     });
+  }
+});
+
+chrome.runtime.onInstalled.addListener((details) => {
+  if (details.reason === 'install') {
+    chrome.tabs.create({ url: 'src/html/about-auto-ejdb.html' });
   }
 });
