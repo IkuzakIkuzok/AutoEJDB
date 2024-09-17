@@ -14,7 +14,9 @@ chrome.action.onClicked.addListener(tab => {
   const originalUrl = tab.url;
   if (!originalUrl) return;
 
-  const host = new URL(originalUrl).hostname;
+  const url = new URL(originalUrl);
+  if (url.protocol !== 'https:') return;
+  const host = url.hostname;
   for (const blackHost of clickBlackList) {
     if (host.includes(blackHost)) return;
   }
