@@ -5,12 +5,19 @@ import { addHost } from "./config-bg.js";
 
 const getEjdbUrl = (/** @type {string} */ originalUrl) => `https://kyoto-u.idm.oclc.org/login?auth=ID1&url=${originalUrl}`;
 
+const clickBlackList = [
+  'kyoto-u.idm.oclc.org',
+  'authidp1.iimc.kyoto-u.ac.jp',
+];
+
 chrome.action.onClicked.addListener(tab => {
   const originalUrl = tab.url;
   if (!originalUrl) return;
 
   const host = new URL(originalUrl).hostname;
-  if (host.endsWith('kyoto-u.idm.oclc.org')) return;
+  for (const blackHost of clickBlackList) {
+    if (host.includes(blackHost)) return;
+  }
   addHost(host);
 
   const ejdbUrl = getEjdbUrl(originalUrl);
